@@ -1,0 +1,131 @@
+.Main {
+	position: relative;
+	display: flex;
+	min-height: 86.1vh;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow-x: clip;
+	scroll-behavior: smooth;
+	overflow-y: visible;
+	isolation: isolate;
+	gap: 5rem;
+}
+
+.Intro {
+	padding-top: 6rem;
+	padding-bottom: 6rem;
+	margin-left: 2.5rem;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.IntroLeft {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 2rem;
+	flex-wrap: nowrap;
+	max-width: 674px;
+}
+
+.IntroTitle {
+	font-weight: 800;
+	letter-spacing: -0.025em;
+	color: rgb(24 24 27);
+	text-align: left;
+	max-width: 43.5rem;
+	font-size: 6rem;
+	line-height: 1;
+}
+
+.IntroText {
+	color: rgb(24 24 27);
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+	letter-spacing: 0;
+}
+
+.IntroButtons {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	flex-wrap: nowrap;
+}
+
+.IntroButtonBuild {
+	display: flex;
+	width: fit-content;
+	flex-direction: column;
+	place-items: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.IntroButtonBuild > a {
+	display: flex;
+	gap: 0.75rem;
+	border-radius: 0.75rem;
+	background-image: linear-gradient(
+		155deg,
+		#7c3aed 40%,
+		#f80282 100%,
+		#fd309b 0
+	);
+	padding: 0.5rem 1.25rem;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 2rem;
+	color: rgb(255 255 255);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	transition-property: all;
+	transition-duration: 0.7s;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover {
+		filter: saturate(1.5);
+	}
+	&:hover > span {
+		transform: translateX(0.25rem);
+	}
+}
+
+.IntroButtonBuild > a > span {
+	transition-property: all;
+	transition-duration: 0.5s;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.IntroButtonCard {
+	margin-top: 0.25rem;
+	height: 0;
+	text-align: center;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: rgb(113 113 122);
+}
+
+.IntroButtonVideo {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+	font-weight: 500;
+	color: black;
+}
+
+.IntroButtonVideo > svg {
+	height: 1.5rem;
+	width: 1.5rem;
+	color: rgb(24 24 27);
+}
+
+.IntroRight{
+	max-width: 505px;
+}
+
+.IntroRight > img{
+	transform: translate(-2rem, -2rem);
+}
