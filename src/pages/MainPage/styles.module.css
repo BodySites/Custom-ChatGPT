@@ -122,10 +122,10 @@
 	color: rgb(24 24 27);
 }
 
-.IntroRight{
+.IntroRight {
 	max-width: 505px;
 }
 
-.IntroRight > img{
+.IntroRight > img {
 	transform: translate(-2rem, -2rem);
 }

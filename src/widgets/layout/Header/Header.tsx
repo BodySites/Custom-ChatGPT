@@ -12,7 +12,6 @@ const Container = styled.header`
 	display: flex;
 	justify-content: space-between;
 	padding: 1rem 2rem;
-	border-bottom-width: 0px;
 `;
 
 const Logo = styled.a`
@@ -77,7 +76,9 @@ export const Header: React.FC = () => {
 	const cont = useRef<null | HTMLDivElement>(null);
 
 	window.addEventListener("scroll", () => {
-		if (window.scrollY <= 1 && cont.current) cont.current.style.borderBottomWidth = `${window.scrollY}px`;
+		if (window.scrollY <= 1 && cont.current)
+			cont.current.style.borderBottomWidth = `${window.scrollY}px`;
+		else if (cont.current) cont.current.style.borderBottomWidth = `1px`;
 	});
 
 	return (
