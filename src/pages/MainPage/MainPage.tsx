@@ -7,9 +7,35 @@ import { SectionLayout } from "../../widgets/layout/SectionLayout";
 import { HeadSection } from "../../shared/ui/HeadSection/HeadSection";
 import { AccordionList } from "../../widgets/AccordionList/AccordionList";
 import accordionItems from "../../widgets/AccordionList/accordionObject";
+import { FeaturesListImages } from "../../widgets/FeaturesList/FeaturesListImages";
+import {
+	featureIconItems,
+	featureImageItems
+} from "../../widgets/FeaturesList/featuresObject";
+import { FeaturesListIcons } from "../../widgets/FeaturesList/FeaturesListIcons";
 
 let Container = styled.div`
 	background-color: #fff;
+`;
+
+const ContainerFeatures = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 4rem;
+`;
+
+const Line = styled.div`
+	height: 0.15rem;
+	width: 25%;
+	align-self: center;
+	background-image: radial-gradient(
+		50% 50% at 50% 50%,
+		#000 10%,
+		#000 20%,
+		rgba(124, 58, 237, 0) 100%
+	);
 `;
 
 export const MainPage: React.FC = () => {
@@ -60,7 +86,18 @@ export const MainPage: React.FC = () => {
 						title="HOW IT WORKS"
 						text="Add your data sources, train the AI, customize it to your liking, and add it to your website."
 					/>
-					<AccordionList items={accordionItems}/>
+					<AccordionList items={accordionItems} />
+				</SectionLayout>
+				<SectionLayout>
+					<HeadSection
+						title="POWERFUL FEATURES"
+						text="Everything you need for your no-code AI chatbot."
+					/>
+					<ContainerFeatures>
+						<FeaturesListImages items={featureImageItems} />
+						<Line />
+						<FeaturesListIcons items={featureIconItems} />
+					</ContainerFeatures>
 				</SectionLayout>
 			</main>
 		</Container>
