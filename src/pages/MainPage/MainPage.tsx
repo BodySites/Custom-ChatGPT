@@ -5,6 +5,7 @@ import bgimage from "../../../public/content/bg-image.png";
 import videoPage from "../../../public/content/studio-ai-landing.mp4";
 import preview from "../../../public/content/landing-video.webp";
 import start from "../../../public/icons/start-white.svg";
+import integrations from "../../../public/content/sources.png";
 import styles from "./styles.module.css";
 import { SectionLayout } from "../../widgets/layout/SectionLayout";
 import { HeadSection } from "../../shared/ui/HeadSection/HeadSection";
@@ -19,6 +20,8 @@ import { FeaturesListIcons } from "../../widgets/FeaturesList/FeaturesListIcons"
 import classNames from "classnames";
 import { CasesList } from "../../widgets/CaseList/CasesList";
 import { caseItems } from "../../widgets/CaseList/casesObject";
+import { ReviewsList } from "../../widgets/ReviewsList/ReviewsList";
+import { reviewItems } from "../../widgets/ReviewsList/reviewsObject";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -42,6 +45,14 @@ const Line = styled.div`
 		#000 20%,
 		rgba(124, 58, 237, 0) 100%
 	);
+`;
+
+const ImgIntegration = styled.img`
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin-top: 3.5rem;
+	color: transparent;
 `;
 
 export const MainPage: React.FC = () => {
@@ -158,6 +169,26 @@ export const MainPage: React.FC = () => {
 						colorText="white"
 					/>
 					<CasesList items={caseItems} />
+				</SectionLayout>
+				<SectionLayout zIndex={30}>
+					<HeadSection
+						title="INTEGRATIONS"
+						text="Ingest data from multiple sources, train your chatbot, and let your users interact with it wherever they are."
+						colorText="white"
+					/>
+					<ImgIntegration
+						src={integrations}
+						alt="Integrations : Google Drive, Notion, Slack, Whatsapp, Messanger, Word,..."
+						loading="lazy"
+					/>
+				</SectionLayout>
+				<SectionLayout zIndex={30}>
+					<HeadSection
+						title="WHAT PEOPLE ARE SAYING"
+						text="Chatbase is the easiest way to create a chatbot for your website. Don't take our word for it! Here's what people are saying."
+						colorText="white"
+					/>
+					<ReviewsList items={reviewItems} />
 				</SectionLayout>
 				<div
 					className={classNames(
