@@ -190,6 +190,14 @@ export const MainPage: React.FC = () => {
 					/>
 					<ReviewsList items={reviewItems} />
 				</SectionLayout>
+				<section className={styles.Advert}>
+					<h2 className={styles.AdvertTitle}>
+						Join the future of AI chatbots today
+					</h2>
+					<a href="/" target="_blank" className={styles.AdvertButton}>
+						Try for Free <span>→</span>
+					</a>
+				</section>
 				<div
 					className={classNames(
 						styles.BGMain,
