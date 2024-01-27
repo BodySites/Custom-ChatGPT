@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { SyntheticEvent, useRef, useState } from "react";
 import styled from "styled-components";
 import { Header } from "../../widgets/layout/Header/Header";
 import bgimage from "../../../public/content/bg-image.png";
@@ -22,6 +22,7 @@ import { CasesList } from "../../widgets/CaseList/CasesList";
 import { caseItems } from "../../widgets/CaseList/casesObject";
 import { ReviewsList } from "../../widgets/ReviewsList/ReviewsList";
 import { reviewItems } from "../../widgets/ReviewsList/reviewsObject";
+import { Footer } from "../../widgets/layout/Footer/Footer";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -69,6 +70,19 @@ export const MainPage: React.FC = () => {
 		}
 	}
 
+	function toVideo() {
+		if (refVideo.current) {
+			window.scroll({
+				top:
+					refVideo.current.getBoundingClientRect().top +
+					window.scrollY -
+					window.innerHeight / 8,
+				left: 0,
+				behavior: "smooth"
+			});
+		}
+	}
+
 	window.addEventListener("beforeunload", () => {
 		background === "black"
 			? localStorage.setItem("BG", "black")
@@ -110,7 +124,13 @@ export const MainPage: React.FC = () => {
 									No credit card required
 								</p>
 							</div>
-							<a href="/" className={styles.IntroButtonVideo}>
+							<a
+								href=""
+								className={styles.IntroButtonVideo}
+								onClick={(e: SyntheticEvent) => {
+									e.preventDefault();
+									toVideo();
+								}}>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 24 24"
@@ -204,6 +224,7 @@ export const MainPage: React.FC = () => {
 						background === "black" ? styles.black : ""
 					)}></div>
 			</main>
+			<Footer />
 		</Container>
 	);
 };

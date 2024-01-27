@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
 	return (
 		<Container ref={cont}>
 			<Logo href="/">
-				<LogoImg src={logo} alt="Chatbase" loading="lazy" />
+				<LogoImg src={logo} alt="Chatbase" />
 				<LogoTitle>Chatbase</LogoTitle>
 			</Logo>
 			<Links>
