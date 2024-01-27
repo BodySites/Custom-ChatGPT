@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { Header } from "../../widgets/layout/Header/Header";
 import bgimage from "../../../public/content/bg-image.png";
+import videoPage from "../../../public/content/studio-ai-landing.mp4";
+import preview from "../../../public/content/landing-video.webp";
+import start from "../../../public/icons/start-white.svg";
 import styles from "./styles.module.css";
 import { SectionLayout } from "../../widgets/layout/SectionLayout";
 import { HeadSection } from "../../shared/ui/HeadSection/HeadSection";
@@ -13,8 +16,9 @@ import {
 	featureImageItems
 } from "../../widgets/FeaturesList/featuresObject";
 import { FeaturesListIcons } from "../../widgets/FeaturesList/FeaturesListIcons";
+import classNames from "classnames";
 
-let Container = styled.div`
+const Container = styled.div`
 	background-color: #fff;
 `;
 
@@ -39,6 +43,37 @@ const Line = styled.div`
 `;
 
 export const MainPage: React.FC = () => {
+	const refVideo = useRef<HTMLVideoElement | null>(null);
+	const [previewVisible, setPreviewVisible] = useState(true);
+	const [background, setBackground] = useState(
+		localStorage.getItem("BG") || "white"
+	);
+
+	function startVideo() {
+		if (previewVisible) {
+			if (refVideo.current) refVideo.current.play();
+			setPreviewVisible(false);
+		}
+	}
+
+	window.addEventListener("beforeunload", () => {
+		background === "black"
+			? localStorage.setItem("BG", "black")
+			: localStorage.setItem("BG", "white");
+	});
+
+	window.addEventListener("scroll", () => {
+		if (
+			refVideo.current &&
+			window.scrollY >
+				window.scrollY +
+					refVideo.current.getBoundingClientRect().top -
+					window.innerHeight / 1.5
+		) {
+			if (background !== "black") setBackground("black");
+		} else if (background !== "white") setBackground("white");
+	});
+
 	return (
 		<Container>
 			<Header />
@@ -99,6 +134,26 @@ export const MainPage: React.FC = () => {
 						<FeaturesListIcons items={featureIconItems} />
 					</ContainerFeatures>
 				</SectionLayout>
+				<section className={styles.Video}>
+					<video src={videoPage} muted controls loop ref={refVideo}></video>
+					<div
+						className={styles.preview}
+						style={!previewVisible ? { display: "none" } : {}}>
+						<img src={preview} alt="Preview" />
+						<button className={styles.startVideo} onClick={startVideo}>
+							<div>
+								<img src={start} alt="Пуск" className={styles.start} />
+								<span className={styles.circleSmall}></span>
+								<span className={styles.circleBig}></span>
+							</div>
+						</button>
+					</div>
+				</section>
+				<div
+					className={classNames(
+						styles.BGMain,
+						background === "black" ? styles.black : ""
+					)}></div>
 			</main>
 		</Container>
 	);

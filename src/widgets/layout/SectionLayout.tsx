@@ -13,9 +13,10 @@ const Container = styled.section`
 `;
 
 interface Props {
+	zIndex?: number;
 	children?: React.ReactNode;
 }
 
-export const SectionLayout: React.FC<Props> = ({ children }) => {
-	return <Container>{children}</Container>;
+export const SectionLayout: React.FC<Props> = ({ zIndex = 0, children }) => {
+	return <Container style={{ zIndex: zIndex }}>{children}</Container>;
 };
