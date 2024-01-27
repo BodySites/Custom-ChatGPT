@@ -17,6 +17,8 @@ import {
 } from "../../widgets/FeaturesList/featuresObject";
 import { FeaturesListIcons } from "../../widgets/FeaturesList/FeaturesListIcons";
 import classNames from "classnames";
+import { CasesList } from "../../widgets/CaseList/CasesList";
+import { caseItems } from "../../widgets/CaseList/casesObject";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -149,6 +151,14 @@ export const MainPage: React.FC = () => {
 						</button>
 					</div>
 				</section>
+				<SectionLayout zIndex={30}>
+					<HeadSection
+						title="USECASES"
+						text="Here are some of the ways you can use Chatbase."
+						colorText="white"
+					/>
+					<CasesList items={caseItems} />
+				</SectionLayout>
 				<div
 					className={classNames(
 						styles.BGMain,
