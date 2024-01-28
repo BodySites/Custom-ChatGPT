@@ -90,7 +90,6 @@ export const AccordionList: React.FC<Props> = ({ items }) => {
 					className={styles.ItemImg}
 					src={items[opened].img}
 					alt="Photo"
-					loading="lazy"
 					ref={imgRef}
 				/>
 			</ImageContainer>
