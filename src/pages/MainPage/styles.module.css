@@ -30,13 +30,18 @@
 }
 
 .Intro {
-	padding-top: 6rem;
-	padding-bottom: 6rem;
-	margin-left: 2.5rem;
+	margin: 0 auto;
 	display: flex;
 	width: 100%;
-	justify-content: center;
-	gap: 2rem;
+	gap: 3rem;
+	padding: 6rem 1.5rem 12rem;
+	max-width: 1280px;
+
+	@media screen and (max-width: 768px) {
+		& {
+			padding: 3rem 1.5rem 6rem;
+		}
+	}
 }
 
 .IntroLeft {
@@ -45,7 +50,7 @@
 	align-items: start;
 	gap: 2rem;
 	flex-wrap: nowrap;
-	max-width: 674px;
+	flex: 4;
 }
 
 .IntroTitle {
@@ -56,6 +61,18 @@
 	max-width: 43.5rem;
 	font-size: 6rem;
 	line-height: 1;
+
+	@media screen and (max-width: 1050px) {
+		& {
+			font-size: 4.5rem;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		& {
+			font-size: 3.75rem;
+		}
+	}
 }
 
 .IntroText {
@@ -63,6 +80,12 @@
 	font-size: 1.125rem;
 	line-height: 1.5rem;
 	letter-spacing: 0;
+
+	@media screen and (max-width: 768px) {
+		& {
+			font-size: 0.925rem;
+		}
+	}
 }
 
 .IntroButtons {
@@ -70,6 +93,14 @@
 	align-items: center;
 	gap: 1.5rem;
 	flex-wrap: nowrap;
+
+	@media screen and (max-width: 768px) {
+		& {
+			flex-direction: column;
+			gap: 2.5rem;
+			align-items: start;
+		}
+	}
 }
 
 .IntroButtonBuild {
@@ -141,11 +172,20 @@
 }
 
 .IntroRight {
-	max-width: 505px;
+	flex: 3;
+	position: relative;
+
+	@media screen and (max-width: 768px) {
+		& {
+			display: none;
+		}
+	}
 }
 
 .IntroRight > img {
-	transform: translate(-2rem, -2rem);
+	position: absolute;
+	top: -3rem;
+	left: -3rem;
 }
 
 .Video {
