@@ -4,7 +4,6 @@ import logoIcon from "../../../../public/icons/logo-circle.svg";
 import inIcon from "../../../../public/icons/in.svg";
 
 const Container = styled.footer`
-	z-index: 30;
 	isolation: isolate;
 	background-color: rgb(24 24 27);
 	color: rgb(255 255 255);

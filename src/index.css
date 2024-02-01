@@ -112,3 +112,7 @@ select {
 	height: 100%;
 	font-family: "Inter", sans-serif;
 }
+
+body.lock {
+	overflow: hidden;
+}

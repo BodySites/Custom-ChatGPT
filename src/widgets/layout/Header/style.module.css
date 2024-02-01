@@ -1,0 +1,92 @@
+.Burger {
+	display: none;
+	height: 2.5rem;
+	width: 2.5rem;
+	border-radius: 0.375rem;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	transition-property: all;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 0.15s;
+
+	&:hover {
+		cursor: pointer;
+		background-color: rgb(244 244 245);
+	}
+
+	&::before,
+	&::after {
+		content: "";
+		background-color: #1e1e1e;
+		position: absolute;
+		width: 54%;
+		height: 2.4px;
+		left: 23%;
+		border-radius: 1px;
+		transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-webkit-transition: all 0.3s ease-in-out;
+	}
+
+	&::before {
+		top: 35%;
+	}
+
+	&::after {
+		bottom: 35%;
+	}
+
+	@media screen and (max-width: 1000px) {
+		& {
+			display: inline-block;
+		}
+	}
+}
+
+.Burger.active::before {
+	transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	top: 47%;
+}
+
+.Burger.active::after {
+	transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	bottom: 47%;
+}
+
+.AdaptiveContainer {
+	position: absolute;
+	z-index: -1;
+	top: -100vh;
+	opacity: 0;
+	left: 0;
+	background-color: #f1f1f1;
+	min-height: calc(100vh - 100%);
+	height: calc(100vh - 100%);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	padding: 1.5rem;
+	overflow-y: auto;
+	scrollbar-width: 0px;
+
+	&::-webkit-scrollbar {
+		width: 0;
+		background: transparent;
+	}
+}
+
+.AdaptiveContainer.active {
+	top: calc(100% + 1px);
+	opacity: 1;
+}
