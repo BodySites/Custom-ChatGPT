@@ -105,6 +105,8 @@
 
 .IntroButtonBuild {
 	display: flex;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
 	width: fit-content;
 	flex-direction: column;
 	place-items: center;
@@ -133,6 +135,7 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:hover {
+		-webkit-filter: saturate(1.5);
 		filter: saturate(1.5);
 	}
 	&:hover > span {
@@ -256,9 +259,11 @@
 	& span {
 		position: absolute;
 		z-index: -1;
+		-webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 		animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 		border-radius: 50%;
 		background-color: rgb(167 139 250);
+		-webkit-animation-duration: 3.5s;
 		animation-duration: 3.5s;
 	}
 }
@@ -285,6 +290,14 @@
 	height: 100%;
 	width: 100%;
 	opacity: 0.5;
+}
+
+@-webkit-keyframes ping {
+	75%,
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
 }
 
 @keyframes ping {
@@ -337,6 +350,7 @@
 		#fd309b 0
 	);
 	padding: 0.9rem 0.875em;
+	-webkit-backdrop-filter: blur(16px);
 	backdrop-filter: blur(16px);
 	font-weight: 500;
 	color: rgb(250 250 250);
@@ -346,6 +360,7 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:hover {
+		-webkit-filter: saturate(1.5);
 		filter: saturate(1.5);
 	}
 }

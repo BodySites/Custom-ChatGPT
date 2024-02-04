@@ -124,6 +124,7 @@
 		rgba(69, 30, 137, 0.5) 0%,
 		rgba(0, 0, 0, 1) 60%
 	);
+	-o-object-fit: contain;
 	object-fit: contain;
 	padding: 3rem;
 	color: transparent;
@@ -156,7 +157,17 @@
 }
 
 .animated {
+	-webkit-animation: ani 0.5s forwards;
 	animation: ani 0.5s forwards;
+}
+
+@-webkit-keyframes ani {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 @keyframes ani {

@@ -8,11 +8,13 @@ import classNames from "classnames";
 const Container = styled.div`
 	margin-top: 1.25rem;
 	width: 100%;
+	-moz-column-gap: 3.5rem;
 	column-gap: 3.5rem;
 	display: grid;
 	grid-template-columns: repeat(6, minmax(0, 1fr));
 
 	@media screen and (max-width: 1000px) {
+		-moz-column-gap: 0;
 		column-gap: 0;
 	}
 `;

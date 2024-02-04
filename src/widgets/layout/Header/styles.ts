@@ -4,6 +4,7 @@ const Container = styled.header`
 	border: 0 solid #e5e7eb;
 	background-color: #fff;
 	position: sticky;
+	position: -webkit-sticky;
 	top: 0;
 	z-index: 10;
 	isolation: isolate;

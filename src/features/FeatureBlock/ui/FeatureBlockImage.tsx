@@ -26,7 +26,9 @@ const Image = styled.div`
 	& img {
 		display: block;
 		max-width: 100%;
+		-o-object-fit: contain;
 		object-fit: contain;
+		-o-object-position: center;
 		object-position: center;
 		padding-left: 1rem;
 		padding-right: 1rem;

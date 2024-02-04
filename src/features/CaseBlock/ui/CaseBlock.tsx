@@ -24,7 +24,9 @@ const Image = styled.img`
 	max-width: 100%;
 	margin-top: 1rem;
 	height: 100%;
+	-o-object-fit: contain;
 	object-fit: contain;
+	-o-object-position: bottom;
 	object-position: bottom;
 	color: transparent;
 `;

@@ -30,6 +30,7 @@ const Signature = styled.figcaption`
 	margin-top: 1rem;
 	display: flex;
 	align-items: center;
+	-moz-column-gap: 1rem;
 	column-gap: 1rem;
 	line-height: 1rem;
 `;
