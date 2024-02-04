@@ -13,6 +13,7 @@ const Container = styled.figure`
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 0.5rem;
+	height: 100%;
 
 	& > div {
 		display: flex;

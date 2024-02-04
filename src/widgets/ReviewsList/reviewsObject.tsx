@@ -13,7 +13,6 @@ export const reviewItems: IReview[] = [
 		name: "Jacob Andreou",
 		tags: "SVP @Snap",
 		styles: {
-			lineHeight: "1.5rem",
 			alignSelf: "flex-end"
 		}
 	},
@@ -34,9 +33,7 @@ export const reviewItems: IReview[] = [
 		avatar: imgThree,
 		name: "Greg Kogan",
 		tags: "VP @pinecone",
-		styles: {
-			lineHeight: "1.5rem"
-		}
+		styles: {}
 	},
 	{
 		text: "“This is awesome, thanks for building it!”",
@@ -44,7 +41,6 @@ export const reviewItems: IReview[] = [
 		name: "Logan.GPT",
 		tags: "Dev Rel @OpenAI",
 		styles: {
-			lineHeight: "1.5rem",
 			alignSelf: "flex-start"
 		}
 	},
@@ -53,8 +49,6 @@ export const reviewItems: IReview[] = [
 		avatar: imgFive,
 		name: "Bence ☺︎ ☻",
 		tags: "Designer @Nortal",
-		styles: {
-			lineHeight: "1.5rem"
-		}
+		styles: {}
 	}
 ];
