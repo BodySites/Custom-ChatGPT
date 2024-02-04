@@ -11,6 +11,10 @@ const Container = styled.div`
 	column-gap: 3.5rem;
 	display: grid;
 	grid-template-columns: repeat(6, minmax(0, 1fr));
+
+	@media screen and (max-width: 1000px) {
+		column-gap: 0;
+	}
 `;
 
 const Accordion = styled.div`

@@ -14,6 +14,10 @@ const SiteSection = styled.section`
 	padding: 3rem 1.5rem;
 	display: flex;
 	justify-content: space-between;
+
+	@media screen and (max-width: 1000px) {
+		margin: 0;
+	}
 `;
 
 const Left = styled.div`
@@ -58,6 +62,10 @@ const Support = styled.div`
 	border-top: 1px solid rgb(39 39 42);
 	padding: 1.5rem 5.5rem;
 	display: flex;
+
+	@media screen and (max-width: 1000px) {
+		padding: 1.5rem;
+	}
 `;
 
 const Button = styled.a`
