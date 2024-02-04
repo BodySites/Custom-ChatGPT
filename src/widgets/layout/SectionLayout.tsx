@@ -5,11 +5,12 @@ const Container = styled.section`
 	margin: 0 auto;
 	margin-bottom: 1.75rem;
 	display: flex;
-	max-width: 75rem;
+	width: 100%;
+	max-width: 1280px;
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 1.75rem;
-	padding: 2.5rem;
+	padding: 2.5rem 1.5rem;
 `;
 
 interface Props {

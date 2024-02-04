@@ -53,6 +53,10 @@
 .ItemTitle {
 	font-weight: 500;
 	font-size: 1.5rem;
+
+	@media screen and (max-width: 768px) {
+		font-size: 1.25rem;
+	}
 }
 
 .HeadItem > img {
@@ -64,6 +68,12 @@
 	transition-property: all;
 	transition-duration: 0.3s;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	@media screen and (max-width: 1000px) {
+		& {
+			display: none;
+		}
+	}
 }
 
 .ItemDescription {
@@ -91,6 +101,17 @@
 	padding-bottom: 0;
 }
 
+.Item.close .ImageContainerSmall {
+	height: 0;
+	margin-bottom: 0;
+	transform: scaleY(0);
+}
+
+.Item.close .ItemImg {
+	padding: 0;
+	margin: 0;
+}
+
 .ItemImg {
 	display: block;
 	position: absolute;
@@ -106,6 +127,32 @@
 	object-fit: contain;
 	padding: 3rem;
 	color: transparent;
+
+	@media screen and (max-width: 1000px) {
+		max-width: 100%;
+		padding: 1.75rem 1rem;
+		margin-left: 0;
+		position: relative;
+	}
+}
+
+.ImageContainerSmall {
+	position: relative;
+	width: 100%;
+	justify-content: center;
+	display: flex;
+	border-radius: 0.375rem;
+	margin-bottom: 1rem;
+	background-color: black;
+	transform: scaleY(1);
+	transition-property: transform;
+	transition-delay: 0.15s;
+	transition-duration: 0.2s;
+	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+	@media screen and (min-width: 1000px) {
+		display: none;
+	}
 }
 
 .animated {

@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import styled from "styled-components";
 import { IAccordion } from "./accordionObject";
 import styles from "./styles.module.css";
@@ -20,15 +20,23 @@ const Accordion = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
+
+	@media screen and (max-width: 1000px) {
+		grid-column: 1 / 7;
+	}
 `;
 
-const ImageContainer = styled.div`
+const ImageContainerBig = styled.div`
 	position: relative;
 	grid-column: span 3 / span 3;
 	height: 45rem;
 	width: 100%;
 	justify-content: center;
 	display: flex;
+
+	@media screen and (max-width: 1000px) {
+		display: none;
+	}
 `;
 
 const ImageBG = styled.div`
@@ -38,6 +46,10 @@ const ImageBG = styled.div`
 	width: 100vw;
 	border-radius: 0.375rem;
 	background-color: rgb(0 0 0);
+
+	@media screen and (max-width: 1000px) {
+		display: none;
+	}
 `;
 
 interface Props {
@@ -45,19 +57,30 @@ interface Props {
 }
 
 export const AccordionList: React.FC<Props> = ({ items }) => {
-	const imgRef = useRef<HTMLImageElement | null>(null);
 	const [opened, setOpened] = useState(0);
+	const [animOpacity, setAnimOpacity] = useState(true);
+
+	const adaptiveContent = (
+		<>
+			<ImageBG />
+			<img
+				className={classNames(
+					styles.ItemImg,
+					animOpacity ? styles.animated : ""
+				)}
+				src={items[opened].img}
+				alt="Photo"
+				onAnimationEnd={() => setAnimOpacity(false)}
+			/>
+		</>
+	);
 
 	function openItem(index: number) {
 		if (index !== opened) {
 			setOpened(index);
+			setAnimOpacity(true);
 		}
 	}
-
-	useEffect(() => {
-		imgRef.current?.classList.remove(styles.animated);
-		setTimeout(() => imgRef.current?.classList.add(styles.animated), 0);
-	}, [opened]);
 
 	return (
 		<Container>
@@ -81,18 +104,11 @@ export const AccordionList: React.FC<Props> = ({ items }) => {
 							<img src={arrowRight} alt="открыть" />
 						</a>
 						<div className={styles.ItemDescription}>{item.description}</div>
+						<div className={styles.ImageContainerSmall}>{adaptiveContent}</div>
 					</div>
 				))}
 			</Accordion>
-			<ImageContainer>
-				<ImageBG />
-				<img
-					className={styles.ItemImg}
-					src={items[opened].img}
-					alt="Photo"
-					ref={imgRef}
-				/>
-			</ImageContainer>
+			<ImageContainerBig>{adaptiveContent}</ImageContainerBig>
 		</Container>
 	);
 };
