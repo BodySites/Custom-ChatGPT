@@ -43,6 +43,10 @@ const TextBlock = styled.div`
 	background-color: rgb(255 255 255);
 	padding: 1.25rem;
 	height: 10rem;
+
+	@media screen and (max-width: 1000px) {
+		height: auto;
+	}
 `;
 
 const Title = styled.h5`

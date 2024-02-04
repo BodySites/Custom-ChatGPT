@@ -19,6 +19,8 @@ const Title = styled.h5`
 	font-size: 1.125rem;
 	line-height: 1.75rem;
 	font-weight: 500;
+	word-wrap: break-word;
+	max-width: 100%;
 `;
 
 const Text = styled.p`

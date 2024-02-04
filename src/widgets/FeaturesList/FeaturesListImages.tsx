@@ -9,6 +9,10 @@ const Container = styled.div`
 	justify-content: center;
 	gap: 2.5rem;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
+
+	@media screen and (max-width: 1000px) {
+		grid-template-columns: 1fr;
+	}
 `;
 
 interface Props {
