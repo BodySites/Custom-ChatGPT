@@ -83,13 +83,7 @@ export const MainPage: React.FC = () => {
 		}
 	}
 
-	window.addEventListener("beforeunload", () => {
-		background === "black"
-			? localStorage.setItem("BG", "black")
-			: localStorage.setItem("BG", "white");
-	});
-
-	window.addEventListener("scroll", () => {
+	function changeBG() {
 		if (
 			refVideo.current &&
 			window.scrollY >
@@ -99,7 +93,15 @@ export const MainPage: React.FC = () => {
 		) {
 			if (background !== "black") setBackground("black");
 		} else if (background !== "white") setBackground("white");
+	}
+
+	window.addEventListener("beforeunload", () => {
+		background === "black"
+			? localStorage.setItem("BG", "black")
+			: localStorage.setItem("BG", "white");
 	});
+	window.addEventListener("load", changeBG);
+	window.addEventListener("scroll", changeBG);
 
 	return (
 		<Container>
