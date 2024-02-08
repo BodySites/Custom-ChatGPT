@@ -21,9 +21,7 @@ export const Header: React.FC = () => {
 				<st.Link href="/" target="_blank">
 					Affiliate
 				</st.Link>
-				<st.Link href="/" target="_blank">
-					Pricing
-				</st.Link>
+				<st.Link href="/Custom-ChatGPT/prices">Pricing</st.Link>
 				<st.Link href="/" target="_blank">
 					Resources
 				</st.Link>

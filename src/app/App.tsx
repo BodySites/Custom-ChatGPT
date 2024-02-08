@@ -1,12 +1,8 @@
-import { MainPage } from "../pages/MainPage/MainPage";
 import "./App.css";
+import { Routing } from "./Routing";
 
 function App() {
-	return (
-		<>
-			<MainPage />
-		</>
-	);
+	return <Routing />;
 }
 
 export default App;

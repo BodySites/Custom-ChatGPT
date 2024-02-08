@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import logoIcon from "../../../../public/icons/logo-circle.svg";
-import inIcon from "../../../../public/icons/in.svg";
+import inWhite from "../../../../public/icons/in-white.svg";
+import inBlack from "../../../../public/icons/in-black.svg";
+import { LinkButton } from "../../../shared/ui/LinkButton/LinkButton";
 
 const Container = styled.footer`
 	isolation: isolate;
-	background-color: rgb(24 24 27);
-	color: rgb(255 255 255);
 `;
 
 const SiteSection = styled.section`
@@ -32,7 +32,7 @@ const Logo = styled.a`
 	margin-right: 6rem;
 	margin-bottom: 1.5rem;
 	gap: 0.25rem;
-	color: white;
+	color: inherit;
 `;
 
 const Img = styled.img`
@@ -49,7 +49,7 @@ const Text = styled.div`
 const Link = styled.a`
 	font-size: 0.8rem;
 	line-height: 1.25rem;
-	color: white;
+	color: inherit;
 `;
 
 const Right = styled.a`
@@ -68,32 +68,17 @@ const Support = styled.div`
 	}
 `;
 
-const Button = styled.a`
-	display: flex;
-	height: 2.25rem;
-	align-items: center;
-	justify-content: center;
-	white-space: nowrap;
-	border-radius: 0.25rem;
-	border: 1px solid rgb(39 39 42);
-	padding: 0.25rem 0.5rem;
-	font-size: 0.8rem;
-	line-height: 1.25rem;
-	font-weight: 500;
-	color: rgb(255 255 255);
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-	transition-property: all;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 0.15s;
+interface Props {
+	BG?: string;
+	colorText?: string;
+}
 
-	&:hover {
-		background-color: rgb(39 39 42);
-	}
-`;
-
-export const Footer: React.FC = () => {
+export const Footer: React.FC<Props> = ({
+	BG = "rgb(24 24 27)",
+	colorText = "white"
+}) => {
 	return (
-		<Container>
+		<Container style={{ backgroundColor: BG, color: colorText }}>
 			<SiteSection>
 				<Left>
 					<Logo href="/">
@@ -108,13 +93,19 @@ export const Footer: React.FC = () => {
 					</Link>
 				</Left>
 				<Right href="" target="_blank">
-					<img src={inIcon} alt="In" />
+					<img src={colorText === "white" ? inWhite : inBlack} alt="In" />
 				</Right>
 			</SiteSection>
 			<Support>
-				<Button href="" target="_blank">
-					Contact Support
-				</Button>
+				{colorText === "white" ? (
+					<LinkButton Color="white" BGHover="rgb(39 39 42)">
+						Contact Support
+					</LinkButton>
+				) : (
+					<LinkButton Color="black" BGHover="rgb(228 228 231)">
+						Contact Support
+					</LinkButton>
+				)}
 			</Support>
 		</Container>
 	);
