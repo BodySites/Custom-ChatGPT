@@ -18,6 +18,7 @@
 		"dotenv": "^16.3.1",
 		"lodash": "^4.17.21",
 		"mobx": "^6.12.0",
+		"mobx-react-lite": "^4.0.5",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-media": "^1.10.0",

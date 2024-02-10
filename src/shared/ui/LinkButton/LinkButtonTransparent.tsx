@@ -26,7 +26,7 @@ interface Props {
 	BGHover?: string;
 }
 
-export const LinkButton: React.FC<Props> = ({
+export const LinkButtonTransparent: React.FC<Props> = ({
 	href = "",
 	Color = "inherit",
 	BGHover = "transparent",

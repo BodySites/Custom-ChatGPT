@@ -3,7 +3,7 @@ import styled from "styled-components";
 import logoIcon from "../../../../public/icons/logo-circle.svg";
 import inWhite from "../../../../public/icons/in-white.svg";
 import inBlack from "../../../../public/icons/in-black.svg";
-import { LinkButton } from "../../../shared/ui/LinkButton/LinkButton";
+import { LinkButtonTransparent } from "../../../shared/ui/LinkButton/LinkButtonTransparent";
 
 const Container = styled.footer`
 	isolation: isolate;
@@ -98,13 +98,13 @@ export const Footer: React.FC<Props> = ({
 			</SiteSection>
 			<Support>
 				{colorText === "white" ? (
-					<LinkButton Color="white" BGHover="rgb(39 39 42)">
+					<LinkButtonTransparent Color="white" BGHover="rgb(39 39 42)">
 						Contact Support
-					</LinkButton>
+					</LinkButtonTransparent>
 				) : (
-					<LinkButton Color="black" BGHover="rgb(228 228 231)">
+					<LinkButtonTransparent Color="black" BGHover="rgb(228 228 231)">
 						Contact Support
-					</LinkButton>
+					</LinkButtonTransparent>
 				)}
 			</Support>
 		</Container>
