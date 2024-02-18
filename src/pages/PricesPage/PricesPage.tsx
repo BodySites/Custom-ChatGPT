@@ -7,6 +7,9 @@ import pricePlanState from "./store/PricePlanState";
 import { observer } from "mobx-react-lite";
 import { PricePlansList } from "../../widgets/PriceList/PricePlansList";
 import { pricePlans } from "../../widgets/PriceList/pricePlansObject";
+import { PricingSectionLayout } from "../../widgets/layout/PricingSectionLayout";
+import { priceAddOnsItems } from "../../features/PriceAddOn/static/PriceAddOnsObject";
+import { PriceAddOnInput, PriceAddOnStatic } from "../../features/PriceAddOn";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -82,6 +85,16 @@ export const PricesPage: React.FC = observer(() => {
 					</PricePlansHead>
 					<PricePlansList items={pricePlans} rateState={pricePlanState.state} />
 				</PricePlans>
+				<PricingSectionLayout title="Add-ons">
+					{priceAddOnsItems.map((addOn, index) =>
+						addOn.subtitle ? (
+							<PriceAddOnInput {...addOn} key={index} />
+						) : (
+							<PriceAddOnStatic {...addOn} key={index} />
+						)
+					)}
+				</PricingSectionLayout>
+				<PricingSectionLayout title="Pricing FAQs"></PricingSectionLayout>
 			</Content>
 			<Footer BG="rgb(244 244 245)" colorText="black" />
 		</Container>

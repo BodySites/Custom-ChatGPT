@@ -13,8 +13,12 @@ const Container = styled.div`
 
 interface Props {
 	children?: React.ReactNode;
+	minHeight?: string;
 }
 
-export const PriceBlockLayout: React.FC<Props> = ({ children }) => {
-	return <Container>{children}</Container>;
+export const PriceBlockLayout: React.FC<Props> = ({
+	children,
+	minHeight = "none"
+}) => {
+	return <Container style={{ minHeight: minHeight }}>{children}</Container>;
 };
