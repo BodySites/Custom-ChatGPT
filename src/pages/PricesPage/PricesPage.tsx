@@ -8,8 +8,13 @@ import { observer } from "mobx-react-lite";
 import { PricePlansList } from "../../widgets/PriceList/PricePlansList";
 import { pricePlans } from "../../widgets/PriceList/pricePlansObject";
 import { PricingSectionLayout } from "../../widgets/layout/PricingSectionLayout";
-import { priceAddOnsItems } from "../../features/PriceAddOn/static/PriceAddOnsObject";
-import { PriceAddOnInput, PriceAddOnStatic } from "../../features/PriceAddOn";
+import {
+	PriceAddOnInput,
+	PriceAddOnStatic,
+	priceAddOnsItems
+} from "../../features/PriceAddOn";
+import { PriceFAQList } from "../../widgets/PriceFAQList/PriceFAQList";
+import { priceFAQsItems } from "../../widgets/PriceFAQList/priceFAQsObject";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -94,7 +99,9 @@ export const PricesPage: React.FC = observer(() => {
 						)
 					)}
 				</PricingSectionLayout>
-				<PricingSectionLayout title="Pricing FAQs"></PricingSectionLayout>
+				<PricingSectionLayout title="Pricing FAQs">
+					<PriceFAQList items={priceFAQsItems} />
+				</PricingSectionLayout>
 			</Content>
 			<Footer BG="rgb(244 244 245)" colorText="black" />
 		</Container>

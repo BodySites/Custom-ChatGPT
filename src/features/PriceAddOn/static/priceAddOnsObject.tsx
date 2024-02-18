@@ -1,4 +1,4 @@
-import { IPriceAddOn } from "..";
+import { IPriceAddOn } from "../api/IPriceAddOn";
 
 export const priceAddOnsItems: IPriceAddOn[] = [
 	{
