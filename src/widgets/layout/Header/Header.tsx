@@ -27,8 +27,8 @@ export const Header: React.FC = () => {
 				</st.Link>
 			</st.Links>
 			<st.Profile>
-				<st.Auth href="/">Log in</st.Auth>
-				<st.Reg href="/">
+				<st.Auth href="/Custom-ChatGPT/signIn">Log in</st.Auth>
+				<st.Reg href="/Custom-ChatGPT/signUp">
 					Try for Free <span>→</span>
 				</st.Reg>
 			</st.Profile>

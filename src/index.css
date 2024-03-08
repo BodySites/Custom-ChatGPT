@@ -53,6 +53,11 @@ input::-ms-clear {
 	display: none;
 }
 
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+	display: none;
+}
+
 input[type="checkbox"] {
 	-webkit-appearance: none;
 	appearance: none;
