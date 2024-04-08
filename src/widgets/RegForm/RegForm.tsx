@@ -12,6 +12,8 @@ import {
 	validPassword,
 	validRequireList
 } from "../../shared/helpers/validationForm/validationForm";
+import { createUser } from "../../entities/user/api/userAPI";
+import { useNavigate } from "react-router-dom";
 
 const Form = styled.form`
 	display: flex;
@@ -71,17 +73,27 @@ export const RegForm: React.FC = () => {
 		false,
 		false
 	]);
+	const [isCreated, setIsCreated] = useState(true);
+	const navigate = useNavigate();
 
-	function onSubmit(e: FormEvent<HTMLFormElement>) {
+	async function onSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		setIsValidEmail(validEmail(e.currentTarget.email.value));
-		setIsValidPassword(validPassword(e.currentTarget.password.value));
-		setIsEqualPasswords(
-			equalPasswords(
-				e.currentTarget.password.value,
-				e.currentTarget.confirmPassword.value
-			)
+		const validEm = validEmail(e.currentTarget.email.value);
+		const validPass = validPassword(e.currentTarget.password.value);
+		const equalPass = equalPasswords(
+			e.currentTarget.password.value,
+			e.currentTarget.confirmPassword.value
 		);
+		if (validEm && validPass && equalPass) {
+			const isCreated = await createUser(
+				e.currentTarget.email.value,
+				e.currentTarget.password.value
+			);
+			isCreated ? navigate("/Custom-ChatGPT") : setIsCreated(false);
+		}
+		setIsValidEmail(validEm);
+		setIsValidPassword(validPass);
+		setIsEqualPasswords(equalPass);
 	}
 
 	function getPassword(text: string) {
@@ -92,8 +104,10 @@ export const RegForm: React.FC = () => {
 	function getTextInvalid(
 		validEmail: boolean,
 		validPassword: boolean,
-		validEqual: boolean
+		validEqual: boolean,
+		isCreated: boolean
 	) {
+		if (!isCreated) return "User with this email already exists";
 		if (!validEmail && !validPassword) return "Invalid Email and Password";
 		if (!validPassword) return "Invalid Password";
 		if (!validEmail && !validEqual)
@@ -140,9 +154,14 @@ export const RegForm: React.FC = () => {
 				<div></div>
 				<LinkButtonBlack type="submit">Sign up</LinkButtonBlack>
 			</Form>
-			{!isValidPassword || !isValidEmail || !isEqualPasswords ? (
+			{!isValidPassword || !isValidEmail || !isEqualPasswords || !isCreated ? (
 				<ErrorText>
-					{getTextInvalid(isValidEmail, isValidPassword, isEqualPasswords)}
+					{getTextInvalid(
+						isValidEmail,
+						isValidPassword,
+						isEqualPasswords,
+						isCreated
+					)}
 				</ErrorText>
 			) : (
 				""

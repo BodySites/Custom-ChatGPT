@@ -7,6 +7,8 @@ import {
 	validEmail,
 	validPassword
 } from "../../shared/helpers/validationForm/validationForm";
+import { useNavigate } from "react-router-dom";
+import { authUser } from "../../entities/user/api/userAPI";
 
 const Form = styled.form`
 	display: flex;
@@ -52,14 +54,30 @@ const ForgotPassword = styled.a`
 export const AuthForm: React.FC = () => {
 	const [isValidPassword, setIsValidPassword] = useState(true);
 	const [isValidEmail, setIsValidEmail] = useState(true);
+	const [isAuth, setIsAuth] = useState(true);
+	const navigate = useNavigate();
 
-	function onSubmit(e: FormEvent<HTMLFormElement>) {
+	async function onSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		setIsValidEmail(validEmail(e.currentTarget.email.value));
-		setIsValidPassword(validPassword(e.currentTarget.password.value));
+		const validEm = validEmail(e.currentTarget.email.value);
+		const validPass = validPassword(e.currentTarget.password.value);
+		if (validEm && validPass) {
+			const isAuth = await authUser(
+				e.currentTarget.email.value,
+				e.currentTarget.password.value
+			);
+			isAuth ? navigate("/Custom-ChatGPT") : setIsAuth(false);
+		}
+		setIsValidEmail(validEm);
+		setIsValidPassword(validPass);
 	}
 
-	function getTextInvalid(validEmail: boolean, validPassword: boolean) {
+	function getTextInvalid(
+		validEmail: boolean,
+		validPassword: boolean,
+		isAuth: boolean
+	) {
+		if (!isAuth) return "Invalid Email or Password";
 		if (!validEmail && !validPassword) return "Invalid Email and Password";
 		if (!validPassword) return "Invalid Password";
 		if (!validEmail) return "Invalid Email";
@@ -85,8 +103,10 @@ export const AuthForm: React.FC = () => {
 				<div></div>
 				<LinkButtonBlack type="submit">Sign in</LinkButtonBlack>
 			</Form>
-			{!isValidPassword || !isValidEmail ? (
-				<ErrorText>{getTextInvalid(isValidEmail, isValidPassword)}</ErrorText>
+			{!isValidPassword || !isValidEmail || !isAuth ? (
+				<ErrorText>
+					{getTextInvalid(isValidEmail, isValidPassword, isAuth)}
+				</ErrorText>
 			) : (
 				""
 			)}
