@@ -1,9 +1,17 @@
-import React from "react";
+import React, { SyntheticEvent, useEffect } from "react";
 import styled from "styled-components";
 import logo from "../../../public/icons/logo-circle.svg";
 import { AuthLayout } from "../../widgets/layout/AuthLayout";
 import { RegForm } from "../../widgets/RegForm/RegForm";
 import { AuthForm } from "../../widgets/AuthForm/AuthForm";
+import {
+	signInGooglePopup,
+	signInGoogleRedirect
+} from "../../entities/user/api/userAPI";
+import { isMobile } from "react-device-detect";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../app/FireBase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -45,6 +53,25 @@ interface Props {
 }
 
 export const AuthPage: React.FC<Props> = ({ page }) => {
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		onAuthStateChanged(auth, user => {
+			if (user) {
+				navigate("/Custom-ChatGPT/prices");
+			}
+		});
+	}, []);
+
+	async function authUserGoogle(e: SyntheticEvent) {
+		e.preventDefault();
+		if (isMobile) signInGoogleRedirect();
+		else {
+			const isAuth = await signInGooglePopup();
+			isAuth && navigate("/Custom-ChatGPT");
+		}
+	}
+
 	return (
 		<Container>
 			<Logo href="/">
@@ -53,11 +80,11 @@ export const AuthPage: React.FC<Props> = ({ page }) => {
 			</Logo>
 			<Content>
 				{page === "SignUp" ? (
-					<AuthLayout title="Get started for free">
+					<AuthLayout title="Get started for free" enterGoogle={authUserGoogle}>
 						<RegForm />
 					</AuthLayout>
 				) : (
-					<AuthLayout title="Welcome Back">
+					<AuthLayout title="Welcome Back" enterGoogle={authUserGoogle}>
 						<AuthForm />
 					</AuthLayout>
 				)}

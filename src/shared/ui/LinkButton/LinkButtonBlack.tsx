@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import styled from "styled-components";
 
 const Link = styled.a`
@@ -33,16 +33,18 @@ const Button = styled.button`
 interface Props {
 	href?: string;
 	type?: "button" | "submit" | "reset";
+	onClick?: (e: SyntheticEvent) => void;
 	children?: React.ReactNode;
 }
 
 export const LinkButtonBlack: React.FC<Props> = ({
 	href = "",
 	type = "button",
+	onClick,
 	children
 }) => {
 	return (
-		<Link href={href}>
+		<Link href={href} onClick={onClick}>
 			<Button type={type}>{children}</Button>
 		</Link>
 	);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import styled from "styled-components";
 import { LinkButtonBlack } from "../../shared/ui/LinkButton/LinkButtonBlack";
 import google from "../../../public/icons/google.svg";
@@ -74,9 +74,14 @@ const InfoLink = styled.a`
 interface Props {
 	title: string;
 	children?: React.ReactNode;
+	enterGoogle: (e: SyntheticEvent) => void;
 }
 
-export const AuthLayout: React.FC<Props> = ({ title, children }) => {
+export const AuthLayout: React.FC<Props> = ({
+	title,
+	children,
+	enterGoogle
+}) => {
 	return (
 		<Container>
 			<Title>{title}</Title>
@@ -85,7 +90,7 @@ export const AuthLayout: React.FC<Props> = ({ title, children }) => {
 				<div></div>
 				<div>Or continue with</div>
 			</HrBlock>
-			<LinkButtonBlack>
+			<LinkButtonBlack onClick={enterGoogle}>
 				<ProviderIcon src={google} alt="google" />
 				Google
 			</LinkButtonBlack>

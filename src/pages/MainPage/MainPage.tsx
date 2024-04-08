@@ -23,6 +23,8 @@ import { caseItems } from "../../widgets/CaseList/casesObject";
 import { ReviewsList } from "../../widgets/ReviewsList/ReviewsList";
 import { reviewItems } from "../../widgets/ReviewsList/reviewsObject";
 import { Footer } from "../../widgets/layout/Footer/Footer";
+import { auth } from "../../app/FireBase";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -62,6 +64,7 @@ export const MainPage: React.FC = () => {
 	const [background, setBackground] = useState(
 		localStorage.getItem("BG") || "white"
 	);
+	const navigate = useNavigate();
 
 	function startVideo() {
 		if (previewVisible) {
@@ -103,6 +106,14 @@ export const MainPage: React.FC = () => {
 	window.addEventListener("load", changeBG);
 	window.addEventListener("scroll", changeBG);
 
+	function clickButton(e: SyntheticEvent) {
+		e.preventDefault();
+
+		auth.currentUser
+			? navigate("/Custom-ChatGPT/prices")
+			: navigate("/Custom-ChatGPT/signUp");
+	}
+
 	return (
 		<Container>
 			<Header />
@@ -119,7 +130,7 @@ export const MainPage: React.FC = () => {
 						</p>
 						<div className={styles.IntroButtons}>
 							<div className={styles.IntroButtonBuild}>
-								<a href="/" target="_blank">
+								<a href="/" onClick={clickButton}>
 									Build your Chatbot <span>→</span>
 								</a>
 								<p className={styles.IntroButtonCard}>
@@ -217,7 +228,7 @@ export const MainPage: React.FC = () => {
 						<h2 className={styles.AdvertTitle}>
 							Join the future of AI chatbots today
 						</h2>
-						<a href="/" target="_blank" className={styles.AdvertButton}>
+						<a href="/" className={styles.AdvertButton} onClick={clickButton}>
 							Try for Free <span>→</span>
 						</a>
 					</div>

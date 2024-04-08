@@ -83,6 +83,32 @@ const Profile = styled.div`
 	}
 `;
 
+const LinkChatBots = styled.a`
+	display: flex;
+	align-items: center;
+	width: 100px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.5rem;
+	color: rgb(24 24 27);
+
+	@media screen and (max-width: 1000px) {
+		display: block;
+		width: 100%;
+		border-top: 1px solid #d9d9d9;
+		border-radius: 0.375rem;
+		padding: 0.5rem;
+		transition-property: background-color, color;
+		transition-duration: 75ms;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		&:hover {
+			background-color: #e4e4e4;
+			color: rgb(109 40 217);
+		}
+	}
+`;
+
 const Reg = styled.a`
 	border-radius: 0.375rem;
 	padding: 0.75rem 0.75rem;
@@ -131,6 +157,7 @@ export const st = {
 	LogoTitle,
 	Links,
 	Link,
+	LinkChatBots,
 	Profile,
 	Reg,
 	Auth
