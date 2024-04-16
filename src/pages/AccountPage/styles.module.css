@@ -1,0 +1,81 @@
+.hr {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	font-size: 0.75rem;
+	line-height: 1rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: rgb(248 113 113);
+
+	& > span {
+		display: inline-block;
+		background-color: rgb(255 255 255);
+		padding: 0 0.5rem;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translate(0, -50%);
+		width: 100%;
+		border: 1px solid #e5e7eb;
+		z-index: -1;
+	}
+}
+
+.hrTwo {
+	margin-bottom: 1rem;
+	margin-top: 0.5rem;
+	height: 1px;
+	width: 100%;
+	background-color: rgb(228 228 231);
+}
+
+.subscribeList {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	border-radius: 0.375rem;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+
+	& > li {
+		display: flex;
+		align-items: center;
+		font-size: 0.8rem;
+		line-height: 1.25rem;
+		position: relative;
+		padding-left: 2rem;
+	}
+	& > li::before {
+		content: url(../../../public/icons/check-mark-account.svg);
+		display: inline-block;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+}
+
+.usageBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	line-height: 1.5rem;
+
+	& span{
+		font-weight: bold;
+	}
+}
+
+.deleteText{
+	line-height: 1.5rem;
+
+	& > span{
+		font-weight: bold;
+	}
+}

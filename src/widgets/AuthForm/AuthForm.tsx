@@ -66,7 +66,7 @@ export const AuthForm: React.FC = () => {
 				e.currentTarget.email.value,
 				e.currentTarget.password.value
 			);
-			isAuth ? navigate("/Custom-ChatGPT") : setIsAuth(false);
+			isAuth ? navigate("/Custom-ChatGPT/my-chatbots") : setIsAuth(false);
 		}
 		setIsValidEmail(validEm);
 		setIsValidPassword(validPass);

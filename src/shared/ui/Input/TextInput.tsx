@@ -1,10 +1,9 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div``;
 
 const Label = styled.label`
-	display: inline-block;
 	font-size: 0.875rem;
 	font-weight: 500;
 	line-height: 1;
@@ -48,6 +47,10 @@ const Input = styled.input`
 		color: #b6b6b6;
 		font-size: 0.8rem;
 	}
+
+	@media screen and (max-width: 400px) {
+		padding-right: 0.75rem;
+	}
 `;
 
 interface Props {
@@ -56,6 +59,8 @@ interface Props {
 	title: string;
 	autoComplete: string;
 	placeholder: string;
+	labelDisable?: boolean;
+	valueDefault?: string;
 }
 
 export const TextInput: React.FC<Props> = ({
@@ -63,13 +68,22 @@ export const TextInput: React.FC<Props> = ({
 	type,
 	title,
 	autoComplete,
-	placeholder
+	placeholder,
+	labelDisable = false,
+	valueDefault = ""
 }) => {
 	const [text, setText] = useState("");
+	useEffect(() => {
+		setText(valueDefault);
+	}, [valueDefault]);
 
 	return (
 		<Container>
-			<Label htmlFor={name}>{title}</Label>
+			<Label
+				htmlFor={name}
+				style={{ display: labelDisable ? "none" : "inline-block" }}>
+				{title}
+			</Label>
 			<Input
 				name={name}
 				id={name}

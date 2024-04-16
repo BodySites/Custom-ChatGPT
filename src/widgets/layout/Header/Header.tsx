@@ -55,7 +55,9 @@ export const Header: React.FC = () => {
 						</st.Reg>
 					</st.Profile>
 				) : (
-					<st.LinkChatBots href="/Custom-ChatGPT/">Chatbots →</st.LinkChatBots>
+					<st.LinkChatBots href="/Custom-ChatGPT/my-chatbots">
+						Chatbots →
+					</st.LinkChatBots>
 				)}
 			</>
 		);

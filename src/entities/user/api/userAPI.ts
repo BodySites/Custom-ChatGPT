@@ -1,10 +1,17 @@
 import {
+	EmailAuthProvider,
 	GoogleAuthProvider,
+	User,
 	createUserWithEmailAndPassword,
+	deleteUser,
 	getRedirectResult,
+	reauthenticateWithCredential,
 	signInWithEmailAndPassword,
 	signInWithPopup,
-	signInWithRedirect
+	signInWithRedirect,
+	updateEmail,
+	updateProfile,
+	verifyBeforeUpdateEmail
 } from "firebase/auth";
 import { auth, provider } from "../../../app/FireBase";
 
@@ -103,4 +110,74 @@ export const authUser = async (email: string, password: string) => {
 		});
 
 	return isAuth;
+};
+
+export const changeEmail = async (email: string, user: User) => {
+	let isChange: boolean = true;
+	let isAuth: boolean = true;
+
+	await verifyBeforeUpdateEmail(user, email)
+		.then(() => {
+			console.log("Verification is sented");
+		})
+		.catch(error => {
+			console.log(error);
+			isAuth = false;
+		});
+
+	if (isAuth)
+		await updateEmail(user, email)
+			.then(() => {
+				console.log("Email is changed");
+			})
+			.catch(error => {
+				console.log(error);
+				isChange = false;
+			});
+	// else {
+	// 	const credential = EmailAuthProvider.credential(
+	// 		user.accessToken
+	// 	);
+	// 	await reauthenticateWithCredential(user, credential)
+	// 		.then(() => {
+	// 			// User re-authenticated.
+	// 		})
+	// 		.catch(error => {
+	// 			// An error ocurred
+	// 			// ...
+	// 		});
+	// }
+	return [isAuth, isChange];
+};
+
+export const changeName = async (name: string, user: User) => {
+	let isChange: boolean = true;
+
+	await updateProfile(user, {
+		displayName: name
+	})
+		.then(() => {
+			console.log("Name is changed");
+		})
+		.catch(error => {
+			console.log(error);
+			isChange = false;
+		});
+
+	return isChange;
+};
+
+export const delUser = async (user: User) => {
+	let isDelete: boolean = true;
+
+	await deleteUser(user)
+		.then(() => {
+			console.log("User deleted");
+		})
+		.catch(error => {
+			console.log(error);
+			isDelete = false;
+		});
+
+	return isDelete;
 };

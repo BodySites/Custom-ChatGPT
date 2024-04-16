@@ -110,7 +110,7 @@ export const MainPage: React.FC = () => {
 		e.preventDefault();
 
 		auth.currentUser
-			? navigate("/Custom-ChatGPT/prices")
+			? navigate("/Custom-ChatGPT/my-chatbots")
 			: navigate("/Custom-ChatGPT/signUp");
 	}
 

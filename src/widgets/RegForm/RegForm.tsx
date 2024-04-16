@@ -89,7 +89,7 @@ export const RegForm: React.FC = () => {
 				e.currentTarget.email.value,
 				e.currentTarget.password.value
 			);
-			isCreated ? navigate("/Custom-ChatGPT") : setIsCreated(false);
+			isCreated ? navigate("/Custom-ChatGPT/my-chatbots") : setIsCreated(false);
 		}
 		setIsValidEmail(validEm);
 		setIsValidPassword(validPass);

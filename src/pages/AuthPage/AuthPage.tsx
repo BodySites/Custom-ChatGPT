@@ -58,7 +58,7 @@ export const AuthPage: React.FC<Props> = ({ page }) => {
 	useEffect(() => {
 		onAuthStateChanged(auth, user => {
 			if (user) {
-				navigate("/Custom-ChatGPT/prices");
+				navigate("/Custom-ChatGPT/my-chatbots");
 			}
 		});
 	}, []);
@@ -68,7 +68,7 @@ export const AuthPage: React.FC<Props> = ({ page }) => {
 		if (isMobile) signInGoogleRedirect();
 		else {
 			const isAuth = await signInGooglePopup();
-			isAuth && navigate("/Custom-ChatGPT");
+			isAuth && navigate("/Custom-ChatGPT/my-chatbots");
 		}
 	}
 
